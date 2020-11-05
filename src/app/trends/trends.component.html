@@ -1,5 +1,6 @@
 <div class="container-fluid px-lg-5" style="padding-bottom: 60px;">
   <div class="row mx-lg-n5 ">
+    
     <!-- Tables with each vertical respectively -->
     <div *ngFor="let brand of brandsGroupedBy" class="table-responsive align-self-end col-md-12 col-xl-4">
       <table class="table table-striped table-bordered table-sm">
@@ -27,6 +28,8 @@
     </div>
     <!-- Table appearing based on the dropdown selection -->
     <div class="col-md-12 col-xl-4">
+
+      <!-- dropdown -->
       <div class="dropdown col-md-12 col-xl-12" style="text-align:right;margin-right: 10%;padding-top: 10px;">
         <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton"
           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
@@ -38,32 +41,33 @@
           <button class="dropdown-item" (click)="selectedVertical($event)">None</button>
           <button class="dropdown-item" (click)="selectedVertical($event)">{{verticals[0]}}</button>
           <button class="dropdown-item" (click)="selectedVertical($event)">{{verticals[1]}}</button>
-          <!-- <button class="dropdown-item" (click)="selectedVertical($event)">{{verticals[1]}}</button> -->
         </div>
-        </div>
-        <div *ngFor="let brand of brandsGroupedBy" class="table-responsive">
-          <table *ngIf="brand[0] === selectedVer" class="table table-striped table-bordered table-sm">
-            <caption style="caption-side: top; color:rgb(53, 78, 114); text-align: center;">
-              <strong>{{brand[0]}}</strong> Store Visit</caption>
-            <thead style="background-color: rgb(87, 115, 155);color: whitesmoke">
-              <tr>
-                <th scope="col">BRAND</th>
-                <th scope="col">VISIT SHARE</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let item of brand[1] | keyvalue">
-                <th scope="row">{{item.value.brand_names}}</th>
-                <td style="display: flex;"><label for="bar"
-                    [value]="getLabel(item.value.ratioInPercentage)">{{label}}</label>
-                  <div id="bar" style="border: 1px solid; border-radius: 12px;margin-left: 5px;height: 25px;" [ngStyle]="{'background-color':getColor(item.value.ratioInPercentage),
+      </div>
+
+      <!-- Brand visit details with respect to dropdown selection -->
+      <div *ngFor="let brand of brandsGroupedBy" class="table-responsive">
+        <table *ngIf="brand[0] === selectedVer" class="table table-striped table-bordered table-sm">
+          <caption style="caption-side: top; color:rgb(53, 78, 114); text-align: center;">
+            <strong>{{brand[0]}}</strong> Store Visit</caption>
+          <thead style="background-color: rgb(87, 115, 155);color: whitesmoke">
+            <tr>
+              <th scope="col">BRAND</th>
+              <th scope="col">VISIT SHARE</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of brand[1] | keyvalue">
+              <th scope="row">{{item.value.brand_names}}</th>
+              <td style="display: flex;"><label for="bar"
+                  [value]="getLabel(item.value.ratioInPercentage)">{{label}}</label>
+                <div id="bar" style="border: 1px solid; border-radius: 12px;margin-left: 5px;height: 25px;" [ngStyle]="{'background-color':getColor(item.value.ratioInPercentage),
                                         'width': item.value.ratioInPercentage + '%',
                                         'border-color':getColor(item.value.ratioInPercentage),
                                         'color':getColor(item.value.ratioInPercentage)}"></div>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
