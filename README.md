@@ -1,4 +1,4 @@
-![Market Trend Analysis](Brand-Visit-Trend-analysis/Market Trend Analysis.gif)
+![Market Trend Analysis](MarketTrendAnalysis.gif)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.5.
 
